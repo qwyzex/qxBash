@@ -1,0 +1,18 @@
+What Do You Want To Be Called? XC
+
+Welcome, XC! >> At the start of new session
+
+##################################################
+
+Do You Want To Use My Custom '.bashrc' Aliases?
+1.Yes )
+2.No )
+#? 1
+
+$ github >> Launch github.com with default browser
+
+##################################################
+
+$ ./reset.sh >> Reset '.bash_profile' to it's original state and remove '.bashrc' file from (~) *IF YOU CONFIRM
+                This there will be no greeting at the start of new session. If, for some reason you want it again,
+                just cd to/where/u/clone/the/repo and run './qxbash.sh'!
