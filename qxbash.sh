@@ -38,6 +38,6 @@ select dir in "~ Home" "/ Root" "Not Now"; do
 done
 
 # FINISHING
-echo "alias qx-help='~/qxBash/help.sh'" >> ~/.bashrc
+echo -e "\nalias qx-help='~/qxBash/help.sh'" >> ~/.bashrc
 echo -e "\nThank You For using qxBash, ${name}!\nYou Can Type 'qx-help' For More Info.\nPlease 'source ~/.bashrc' First If You Want To Use The New Aliases"
 echo "If You Don't Like The Script You Can Go To Where You Clone The Repo And Run './reset.sh'"
