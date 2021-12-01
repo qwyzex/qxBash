@@ -13,6 +13,4 @@ $ github >> Launch github.com with default browser
 
 ##################################################
 
-$ ./reset.sh >> Reset '.bash_profile' to it's original state and remove '.bashrc' file from (~) *IF YOU CONFIRM
-                This there will be no greeting at the start of new session. If, for some reason you want it again,
-                just cd to/where/u/clone/the/repo and run './qxbash.sh'!
+$ ./reset.sh >> Restore '.bashrc' and '.bash_profile' to the state before you running './qxBash'

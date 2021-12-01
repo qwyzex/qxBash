@@ -1,10 +1,16 @@
-# RENAME FILE
-mv pf.txt .bash_profile
-mv rc.txt .bashrc
-
 # MAKE FOLDER IN HOME DIRECTORY
 mkdir ~/qxBash
+mkdir ~/qxBash/backup
+mkdir ~/qxBash/qxEssentials
 cp help.sh ~/qxBash
+cp qxEssentials/bashrc qxEssentials/re-prompt.sh ~/qxBash/qxEssentials
+
+# BACKUP ESSENTIALS FILES
+cp ~/.bashrc ~/qxBash/backup
+cp ~/.bash_profile ~/qxBash/backup
+
+# RENAME FILES
+mv ~/qxBash/qxEssentials/bashrc ~/qxBash/qxEssentials/.bashrc
 
 echo -e ""
 
@@ -18,17 +24,27 @@ echo -e '# COLORS\nblack="\033[0;30m"\nred="\033[0;31m"\ngreen="\033[0;32m"\nnc=
 echo 'echo -e "\nWelcome, ${green}${name}${nc}!"' >> ~/.bash_profile
 # echo "cd ~" >> ~/.bash_profile
 
+# CHANGE SHELL PROMPT
+echo -e "\nDo You Want To Change The Shell Prompt Too?"
+select sp in "[ user@host <time> ] dir >>" "user@host >> dir {DOLLAR}" "No"; do
+	case $sp in 
+		"[ user@host <time> ] dir >>" ) echo 'export PS1="\n\e[1;34m[ \u@\h ]\e[m \e[1;32m\W\e[m \n>> "' >> ~/.bash_profile; echo "SUCCESSFULLY CHANGE SHELL PROMPT, START A NEW SESSION TO APPLY THE CHANGE OR 'source ~/.bash_profile'"; break;;
+		"user@host >> dir {DOLLAR}" ) echo '\e[1;33\u@\h\e[m >> \e[1;32m\W\e[m \n\$' >> ~/.bash_profile; echo "SUCCESSFULLY CHANGE SHELL PROMPT, START A NEW SESSION TO APPLY THE CHANGE OR 'source ~/.bash_profile'"; break;;
+		"No" ) echo 'You Can Still Do This Again If You Want. Run ~/qxBash/qxEssentials/re-prompt.sh'; break;;
+	esac
+done
+
 # MY CUSTOM '.bashrc' ALIASES
-echo -e "\nDo You Want To Use My Custom '.bashrc' Aliases? (This Will Erase The Existing '.bashrc' File! Be Careful!)"
+echo -e "\nDo You Want To Use My Custom '.bashrc' Aliases? (This Will Overwrite The Current File. However, You Can Restore The Previous '.bahsrc' At '~/qxBash/backup' Or Run '~/qxBash/reset.sh' !)"
 select yn in "Yes" "No"; do
 	case $yn in 
-		Yes ) cp .bashrc ~; break;;
-		No ) exit;;
+		Yes ) cp ~/qxBash/qxEssentials/.bashrc ~; break;;
+		No ) break;;
 	esac
 done
 
 # STARTUP DIRECTORY
-echo -e "\nWhich Directory You Want Load With Startup?" 
+echo -e "\nWhich Directory You Want Load When Startup?" 
 select dir in "~ Home" "/ Root" "Not Now"; do
 	case $dir in
 		"~ Home" ) echo "cd ~" >> ~/.bash_profile; break;;
